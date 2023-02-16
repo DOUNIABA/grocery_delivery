@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema(
         password: String,
         role: String,
         image: String,
-        status: { type: Boolean, default: false },
+        status: { type: Boolean, default: true },
     },
     {
         timestamps: true
