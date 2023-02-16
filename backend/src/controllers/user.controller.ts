@@ -13,7 +13,7 @@ export class UserControllers {
         }
     }
 
-    static async AddLivreur(req: Request, res: Response) {
+    static async AddLivreur(req: Request, res: Response) {   
         try {
             const { username, email } = req.body;
             if (username == '' || email == '') res.json({ error: 'Fill the all fields to register' })
@@ -40,6 +40,7 @@ export class UserControllers {
         }
     }
 
+    
     static async DeleteLivreur(req: Request, res: Response) {
         try {
             const { id } = req.params;
