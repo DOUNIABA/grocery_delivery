@@ -33,7 +33,7 @@ class App {
         this.app.use('/api/auth', auth_route);
         this.app.use('/api/app', app_route);
         this.app.all('*', async (req, res) => {
-            res.status(404).send('Page not found');
+            res.json({ error: 'Page not found' })
         });
     }
 
