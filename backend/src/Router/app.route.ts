@@ -1,7 +1,8 @@
 import * as express from 'express';
-import { UserControllers } from '../controllers/user.controller';
+import { livreur_route } from './mini.router/livreur.route'
+import { vendeur_route } from './mini.router/vendeur.route'
 
-class AuthRoute {
+class AppRoute {
     public Route: express.Router;
 
     constructor() {
@@ -11,14 +12,9 @@ class AuthRoute {
     }
 
     private AppRouter() {
-        this.Route.get('/get-all-livreur', UserControllers.GetAllLivreur);
-        this.Route.post('/add-livreur', UserControllers.AddLivreur);
-        this.Route.delete('/delete-livreur/:id', UserControllers.DeleteLivreur);
-
-        this.Route.get('/get-all-vendeur', UserControllers.GetAllVendeur);
-        this.Route.post('/add-vendeur', UserControllers.AddVendeur);
-        this.Route.delete('/delete-vendeur/:id', UserControllers.DeleteVendeur);
+        this.Route.use('/livreur', livreur_route);
+        this.Route.use('/vendeur', vendeur_route);
     }
 }
 
-export const app_route = new AuthRoute().Route;
+export const app_route = new AppRoute().Route;
