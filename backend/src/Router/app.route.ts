@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { livreur_route } from './mini.router/livreur.route'
 import { vendeur_route } from './mini.router/vendeur.route'
+import { categorie_route } from './mini.router/categorie.route'
 
 class AppRoute {
     public Route: express.Router;
@@ -14,6 +15,7 @@ class AppRoute {
     private AppRouter() {
         this.Route.use('/livreur', livreur_route);
         this.Route.use('/vendeur', vendeur_route);
+        this.Route.use('/categorie', categorie_route);
     }
 }
 
