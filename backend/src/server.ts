@@ -38,7 +38,12 @@ class App {
     }
 
     private connectToTheDatabase() {
-        mongoose.connect(env.DATA_BASE, { useNewUrlParser: true, useUnifiedTopology: true })
+        mongoose.connect(env.DATA_BASE, {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false
+        })
             .then(() => {
                 console.log('Successfully connect');
             })
