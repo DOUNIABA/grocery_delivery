@@ -21,7 +21,7 @@ export class UserControllers {
             else if (!validator.isEmail(email)) res.json({ error: `${email} is not email` })
             else {
                 const find_user = await User.findOne({ email })
-                if (find_user) res.json({ error: 'User existed' })
+                if (find_user) res.json({ error: 'Livreur existed' })
                 else {
                     const password = '111'
                     const hash = await Password.hash(password)
@@ -31,7 +31,7 @@ export class UserControllers {
                         password: hash,
                         role: 'Livreur'
                     })
-                    if (!create_user) res.json({ error: 'Error creating user' })
+                    if (!create_user) res.json({ error: 'Error creating livreur' })
                     res.json({ message: 'Livreur Created Successfully' })
                 }
             }
@@ -51,6 +51,61 @@ export class UserControllers {
                     const delete_user = await User.updateOne({ _id: id }, { status: false })
                     if (!delete_user) res.json({ error: 'Error deleting livreur' })
                     res.json({ message: 'Livreur deleted Successfully' })
+                }
+            }
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+
+
+    static async GetAllVendeur(req: Request, res: Response) {
+        try {
+            const get_all_Vendeur = await User.find({ role: 'Vendeur' })
+            res.json({ get_all_Vendeur })
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+
+    static async AddVendeur(req: Request, res: Response) {
+        try {
+            const { username, email } = req.body;
+            if (username == '' || email == '') res.json({ error: 'Fill the all fields to register' })
+            else if (!validator.isAlpha(username)) res.json({ error: `${username} is not username` })
+            else if (!validator.isEmail(email)) res.json({ error: `${email} is not email` })
+            else {
+                const find_user = await User.findOne({ email })
+                if (find_user) res.json({ error: 'Vendeur existed' })
+                else {
+                    const password = '111'
+                    const hash = await Password.hash(password)
+                    const create_user = await User.create({
+                        username,
+                        email,
+                        password: hash,
+                        role: 'Vendeur'
+                    })
+                    if (!create_user) res.json({ error: 'Error creating vendeur' })
+                    res.json({ message: 'Vendeur Created Successfully' })
+                }
+            }
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+
+    static async DeleteVendeur(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            if (id == '') res.json({ error: 'Fill the all fields to register' })
+            else {
+                const find_user = await User.findById(id)
+                if (!find_user) res.json({ error: 'Vendeur not found' })
+                else {
+                    const delete_user = await User.updateOne({ _id: id }, { status: false })
+                    if (!delete_user) res.json({ error: 'Error deleting vendeur' })
+                    res.json({ message: 'Vendeur deleted Successfully' })
                 }
             }
         } catch (error) {
