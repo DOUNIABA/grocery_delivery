@@ -31,7 +31,7 @@ class App {
 
     private initializeControllers() {
         this.app.use('/api/auth', auth_route);
-        this.app.use('/api/app', app_route);
+        this.app.use('/api', app_route);
         this.app.all('*', async (req, res) => {
             res.json({ error: 'Page not found' })
         });
