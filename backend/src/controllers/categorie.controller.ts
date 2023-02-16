@@ -24,18 +24,30 @@ export class CategorieControllers {
     }
     }
         
-      static async RemoveCategorie (req: Request, res: Response){{
+      static async RemoveCategorie (req: Request, res: Response){
         try{
-            const { id } = req.params;
-        const rem= await Categorie.findOneAndRemove({_id:id})
-        res.json({msg:"removed"})           
+        const { id } = req.params;
+        const remove= await Categorie.findOneAndRemove({_id:id})
+        if(remove) res.json({msg:"removed"})           
         }
         catch(error){
             res.status(500).json({msg:error})
-        }
+        
     }
-    
         }
-       
-}
+
+        static async UpdateCategorie(req: Request, res: Response){
+            try{
+                const id = req.params.id
+                const {body}=req
+                const find_categorie= await Categorie.updateOne({_id:id},{...body})
+                if(find_categorie) res.json({msg:'updated'})
+            }
+            catch(error){
+                res.status(500).json({msg:error})
+            }
+          
+
+          }
+        }
     
