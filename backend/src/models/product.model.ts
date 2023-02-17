@@ -2,8 +2,12 @@ import * as mongoose from 'mongoose';
 import IProduct from '../interfaces/Product.interfaces';
 const ProdSchema = new mongoose.Schema(
     {
-        name: String
-    },  
+        name: { type: String, unique: true },
+        description: String,
+        image : String,
+        prix : Number,
+    },
+    
     {
         timestamps: true
     }
