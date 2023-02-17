@@ -18,7 +18,6 @@ class AppRoute {
         this.Route.use('/vendeur', vendeur_route);
         this.Route.use('/categorie', categorie_route);
         this.Route.use('/produit', Product_route);
-
     }
 }
 
