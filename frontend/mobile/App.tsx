@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import Index from './src/index';
 
 function App(): JSX.Element {
 
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <Index />
   );
 }
 
