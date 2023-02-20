@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, TextInput } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import colors from '../assets/styles/colors';
+import styles from '../assets/styles/styles';
 
 const Input = (props: any) => {
     const icons = [
@@ -12,14 +13,14 @@ const Input = (props: any) => {
     ]
 
     return (
-        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: 5, paddingRight: 10, borderBottomColor: colors.black, borderBottomWidth: 8, }}>
+        <View style={styles.authInput}>
             <TextInput
                 placeholder={props.placeholder}
                 placeholderTextColor={colors.black}
                 secureTextEntry={(props.type === 'password') ? true : false}
                 style={{ height: 50, fontSize: 18, }}
             />
-            {/* <Icon name={(props.type === 'username') ? 'account' : 'email'} size={25} color={colors.black} ></Icon> */}
+            <Icon name={(props.type === 'username') ? 'account' : 'email'} size={25} color={colors.black} ></Icon>
         </View>
     );
 }

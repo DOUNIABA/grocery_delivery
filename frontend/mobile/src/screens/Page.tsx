@@ -9,14 +9,12 @@ function Page() {
     const navigation = useNavigation();
     const [load, setLoad] = useState(false);
     useEffect(() => {
-        setTimeout(() => {
-            setLoad(true)
-        }, 1000)
+        setTimeout(() => { setLoad(true) }, 1000)
     }, [])
 
     if (load)
         return (
-            <View style={styles.auth}>
+            <View style={[styles.auth, { justifyContent: 'space-evenly' }]}>
                 <View style={styles.header}>
                     <Image source={require('../assets/images/grocery.png')} />
                 </View>
@@ -32,7 +30,7 @@ function Page() {
         )
     else
         return (
-            <View style={styles.auth}>
+            <View style={[styles.auth, { justifyContent: 'space-evenly' }]}>
                 <ActivityIndicator size="large" color={colors.white} />
             </View>
         )
