@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import 'dotenv/config';
 import env from './utiles/index';
 
@@ -25,6 +26,7 @@ class App {
 
     private initializeMiddlewares() {
         this.app.use(express.json());
+        this.app.use(cors());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.static("public"));
     }
