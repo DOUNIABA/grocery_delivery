@@ -11,7 +11,6 @@ function Index() {
         <NavigationContainer>
             <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
                 <Tab.Screen options={{ headerShown: false }} name="Auth" component={AuthRouter} />
-                {/* <Tab.Screen options={{ headerShown: false }} name="Auth" component={AppRouter} /> */}
             </Tab.Navigator>
         </NavigationContainer>
     );

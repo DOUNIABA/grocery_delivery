@@ -15,6 +15,7 @@ const Input = (props: any) => {
     return (
         <View style={styles.authInput}>
             <TextInput
+                onChangeText={props.onChangeText}
                 placeholder={props.placeholder}
                 placeholderTextColor={colors.black}
                 secureTextEntry={(props.type === 'password') ? true : false}
