@@ -1,14 +1,17 @@
 import axios from 'axios';
 
+// import { useDispatch } from 'react-redux';
+// const dispatch = useDispatch();
+
 const SERVER = 'http://172.16.10.62:5000'
 
 export const ApiLogin = async (data) => {
     await axios.post(`${SERVER}/api/auth/login`, data)
         .then((res) => {
             if (!res.data.token) {
-                console.log('Login filed: ', res.data.error)
+                dispatch(LOGIN_FAIL, res.data.error)
             } else {
-                console.log('Login success: ', res.data)
+                dispatch(LOGIN_SUCCESS, res.data)
             }
         })
         .catch((error) => {
@@ -28,3 +31,5 @@ export const ApiRegister = async (data) => {
             console.log(error)
         })
 }
+
+// module.exports = { ApiLogin, ApiRegister }

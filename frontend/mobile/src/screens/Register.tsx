@@ -9,7 +9,7 @@ import AuthHeader from '../components/Auth.Header';
 import Input from '../components/Input';
 import SocialMedia from '../components/SocialMedia';
 
-import { ApiRegister } from '../services/auth.services';
+import { ApiRegister } from '../redux/services/auth.services';
 
 const Register = () => {
     const navigation = useNavigation();
