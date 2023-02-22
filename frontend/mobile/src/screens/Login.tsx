@@ -8,7 +8,7 @@ import AuthHeader from '../components/Auth.Header';
 import Input from '../components/Input';
 import SocialMedia from '../components/SocialMedia';
 
-import ApiLogin from '../services/auth.services';
+import { ApiLogin } from '../services/auth.services';
 
 function Login() {
     const navigation = useNavigation();
@@ -19,8 +19,8 @@ function Login() {
         <View style={[styles.auth, { justifyContent: 'space-between' }]}>
             <AuthHeader />
             <View style={styles.authForm}>
-                <Input placeholder="Email" type='email' onChangeText={(value: any)=>setLogin({ ...login, email: value })} />
-                <Input placeholder="Password" type='password' onChangeText={(value: any)=>setLogin({ ...login, password: value })} />
+                <Input placeholder="Email" type='email' onChangeText={(value: any) => setLogin({ ...login, email: value })} />
+                <Input placeholder="Password" type='password' onChangeText={(value: any) => setLogin({ ...login, password: value })} />
                 <View style={styles.Forget}>
                     <Text style={styles.textForget} >Forget Password ?</Text>
                 </View>
