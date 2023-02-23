@@ -31,16 +31,22 @@ const AuthSlice = createSlice({
                 state.message = ''
         },
 
+        REGISTER_SUCCESS: (state, action) => {
+            state.message = action.payload
+        },
+        REGISTER_FAIL: (state, action) => {
+            state.message = action.payload
+        },
+
         SETMESSAGE: state => {
             state.message = ''
         },
-
         SETTOKEN: (state, action) => {
             state.token = action.payload
         }
     },
 })
 
-export const { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, SETMESSAGE } = AuthSlice.actions
+export const { LOGIN_SUCCESS, LOGIN_FAIL, REGISTER_SUCCESS, REGISTER_FAIL, LOGOUT, SETMESSAGE } = AuthSlice.actions
 
 export default AuthSlice

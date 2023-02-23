@@ -19,7 +19,7 @@ export class AuthControllers {
                     else {
                         const token = await Token.Token(find_user._id)
                         res.header({ token })
-                        res.json({ token, email, username: find_user.username })
+                        res.json({ token, user: { username: find_user.username, email, role: find_user.role } })
                     }
                 }
             }
