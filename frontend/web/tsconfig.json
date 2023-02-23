@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "pages/_app.js", "components/Layout.js", "components/formCategorie.js", "components/SideBar.js", "components/TopBar.js", "pages/login.js", "pages/Home.js", "pages/index.js", "components/tableCategorie.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "pages/_app.js", "components/Layout.js", "components/categorie/formCategorie.jstegorie.js", "components/SideBar.js", "components/TopBar.js", "pages/login.js", "pages/Home.js", "pages/index.js", "components/categorie/tableCategorie.jstegorie.js"],
   "exclude": ["node_modules"]
 }
