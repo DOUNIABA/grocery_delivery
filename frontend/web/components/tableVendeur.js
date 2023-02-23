@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function table() {
     const [vendeurs, setVendeurs] = useState([])
@@ -13,6 +15,16 @@ export default function table() {
                 console.log(err)
             })
     }
+    const deleteVendeur = async (id) => {
+        await axios.delete(`http://172.26.48.1:5000/api/vendeur/delete-vendeur/${id}`)
+            .then((value) => {
+                notify(value.data.message)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    const notify = (message) => toast(message);
     useEffect(() => {
         data()
     }, [vendeurs])
@@ -37,8 +49,8 @@ export default function table() {
                                 <td>{e.email}</td>
                                 <td className="px-3 d-flex justify-content-around ">
                                     {e.status
-                                        ? <i className="bi bi-trash2-fill h5"></i>
-                                        : <i className="bi bi-arrow-clockwise h5"></i>
+                                        ? <i type='button' onClick={() => deleteVendeur(e._id)} className="bi bi-trash2-fill h5"></i>
+                                        : <i type='button' onClick={() => deleteVendeur(e._id)} className="bi bi-arrow-clockwise h5"></i>
                                     }
                                 </td>
                             </tr>
@@ -46,6 +58,7 @@ export default function table() {
                     }
                 </tbody>
             </table>
+            <ToastContainer />
         </div>
 
     )
