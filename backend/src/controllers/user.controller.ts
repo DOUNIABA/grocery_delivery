@@ -13,7 +13,7 @@ export class UserControllers {
         }
     }
 
-    static async AddLivreur(req: Request, res: Response) {   
+    static async AddLivreur(req: Request, res: Response) {
         try {
             const { username, email } = req.body;
             if (username == '' || email == '') res.json({ error: 'Fill the all fields to register' })
@@ -40,7 +40,7 @@ export class UserControllers {
         }
     }
 
-    
+
     static async DeleteLivreur(req: Request, res: Response) {
         try {
             const { id } = req.params;
@@ -72,7 +72,7 @@ export class UserControllers {
     static async AddVendeur(req: Request, res: Response) {
         try {
             const { username, email } = req.body;
-            if (username == '' || email == '') res.json({ error: 'Fill the all fields to register' })
+            if (username == '' || email == '') res.json({ error: 'Fill the all fields to add venduer' })
             else if (!validator.isAlpha(username)) res.json({ error: `${username} is not username` })
             else if (!validator.isEmail(email)) res.json({ error: `${email} is not email` })
             else {
@@ -104,9 +104,16 @@ export class UserControllers {
                 const find_user = await User.findById(id)
                 if (!find_user) res.json({ error: 'Vendeur not found' })
                 else {
-                    const delete_user = await User.updateOne({ _id: id }, { status: false })
-                    if (!delete_user) res.json({ error: 'Error deleting vendeur' })
-                    res.json({ message: 'Vendeur deleted Successfully' })
+                    if (find_user.status) {
+                        const delete_user = await User.updateOne({ _id: id }, { status: false })
+                        if (!delete_user) res.json({ error: 'Error banned vendeur' })
+                        res.json({ message: 'Vendeur banned' })
+                    }
+                    else {
+                        const delete_user = await User.updateOne({ _id: id }, { status: true })
+                        if (!delete_user) res.json({ error: 'Error unbanned vendeur' })
+                        res.json({ message: 'Vendeur unbanned' })
+                    }
                 }
             }
         } catch (error) {
