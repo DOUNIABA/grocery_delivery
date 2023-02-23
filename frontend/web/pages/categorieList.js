@@ -1,5 +1,5 @@
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import {BiEdit} from "react-icons/bi"
 import Form from "@/components/formCategorie"
 import Table from "@/components/tableCategorie"
@@ -7,10 +7,10 @@ import colors from "@/styles/colors"
 
 export default function categorieList() {
 const [visible,setVisible]= useState(false)
+// const navigate=useNavigate()
 
 const handler = () =>{
     setVisible(visible ? false : true)
-
 }
 
     return (
@@ -23,12 +23,8 @@ const handler = () =>{
             <div className="mx-5">
             {visible? <Form></Form> : <></>}
         </div>
-            
         <hr></hr>
-            
         </div>
-        
-
         <div className="container mx-auto">
             <Table></Table>
         </div>
