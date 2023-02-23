@@ -5,9 +5,11 @@ import Form from "@/components/formCategorie"
 import Table from "@/components/tableCategorie"
 import colors from "@/styles/colors"
 
+
 export default function categorieList() {
 const [visible,setVisible]= useState(false)
 // const navigate=useNavigate()
+
 
 const handler = () =>{
     setVisible(visible ? false : true)
