@@ -1,5 +1,5 @@
 import React from 'react';
-import colors from '../assets/styles/colors';
+import colors from '@/assets/styles/colors';
 
 export default function Login() {
   const [login, setLogin] = React.useState({ email: '', password: '' })

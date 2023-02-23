@@ -1,31 +1,16 @@
 import Link from "next/link"
-<<<<<<< HEAD
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { BiEdit } from "react-icons/bi"
-=======
-import React, { useState,useEffect } from "react"
-import {BiEdit} from "react-icons/bi"
->>>>>>> 639aeb1f2235610a47d171e75b6952b1179678d6
 import Form from "@/components/formCategorie"
 import Table from "@/components/tableCategorie"
-import colors from "@/styles/colors"
-
+import colors from "@/assets/styles/colors"
 export default function categorieList() {
-<<<<<<< HEAD
     const [visible, setVisible] = useState(false)
+    // const navigate=useNavigate()
 
     const handler = () => {
         setVisible(visible ? false : true)
-
     }
-=======
-const [visible,setVisible]= useState(false)
-// const navigate=useNavigate()
-
-const handler = () =>{
-    setVisible(visible ? false : true)
-}
->>>>>>> 639aeb1f2235610a47d171e75b6952b1179678d6
 
     return (
         <main className='py-3'>
@@ -37,35 +22,14 @@ const handler = () =>{
                 <div className="mx-5">
                     {visible ? <Form></Form> : <></>}
                 </div>
-
                 <hr></hr>
-
             </div>
-
-
             <div className="container mx-auto">
                 <Table></Table>
             </div>
-<<<<<<< HEAD
 
 
         </main>
     )
 
-=======
-            <div className="mx-5">
-            {visible? <Form></Form> : <></>}
-        </div>
-        <hr></hr>
-        </div>
-        <div className="container mx-auto">
-            <Table></Table>
-        </div>
-
-
-    </main>
-  )
-  
->>>>>>> 639aeb1f2235610a47d171e75b6952b1179678d6
 }
-
