@@ -6,6 +6,8 @@ import env from './utiles/index';
 import { auth_route } from './Router/auth.route';
 import { app_route } from './Router/app.route';
 
+import cors from 'cors'
+
 class App {
     public app: express.Application;
 
@@ -25,6 +27,7 @@ class App {
 
     private initializeMiddlewares() {
         this.app.use(express.json());
+        this.app.use(cors());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.static("public"));
     }
