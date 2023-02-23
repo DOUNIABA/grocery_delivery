@@ -22,11 +22,11 @@ export class CategorieControllers {
         res.status(500).json({msg:error})
     }
     }
-        
+
       static async RemoveCategorie (req: Request, res: Response){
         try{
-        const { id } = req.params;
-        const remove= await Categorie.findOneAndRemove({_id:id})
+        const {id} = req.params;
+        const remove = await Categorie.findOneAndRemove({id})
         if(remove) res.json({msg:"removed"})           
         }
         catch(error){

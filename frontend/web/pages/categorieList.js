@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react"
 import { BiEdit } from "react-icons/bi"
 import Form from "@/components/formCategorie"
 import Table from "@/components/tableCategorie"
+import colors from "@/styles/colors"
+
 import colors from "@/assets/styles/colors"
 export default function categorieList() {
     const [visible, setVisible] = useState(false)
-    // const navigate=useNavigate()
-
-    const handler = () => {
-        setVisible(visible ? false : true)
-    }
+    
+const handler = () =>{
+    setVisible(visible ? false : true)
+}
 
     return (
         <main className='py-3'>

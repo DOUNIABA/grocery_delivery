@@ -4,15 +4,23 @@ import axios from "axios"
  export default function table() {
     const [categories,setCategories]=useState([])
 
-const data= async ()=>{
-    await axios.get('http://172.16.8.43:5000/api/categorie/get-all-categorie')
-        .then((value)=>{
-            setCategories(value.data.categories)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-   }
+    const remove = async (e) => {
+        e.preventDefault();
+        const categories = await axios.delete("http://172.16.8.43:5000/api/categorie/Remove-categorie",{ id: e.target.value });
+        if (categories.data) 
+        console.log(categories.data)
+        // window.location.reload(false);
+      };
+    
+    const data= async ()=>{
+        await axios.get('http://172.16.8.43:5000/api/categorie/get-all-categorie')
+            .then((value)=>{
+                setCategories(value.data.categories)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
 
 useEffect(()=>{
     data();
@@ -37,7 +45,7 @@ useEffect(()=>{
                     <td>{e.name}</td>
                     <td className="px-3 d-flex justify-content-around ">
                     <button type="submit" className="btn btn-secondary">Edit</button>
-                    <button type="submit" className=" btn btn-secondary">Delet</button>
+                    <button type="submit" className=" btn btn-secondary" value={e._id} onClick={remove}>Delete</button>
                     </td>
                     </tr>
                         ))
