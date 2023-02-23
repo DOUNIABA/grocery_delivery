@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import { BiEdit } from "react-icons/bi"
 import Form from "@/components/formCategorie"
 import Table from "@/components/tableCategorie"
-import colors from "@/styles/colors"
+import Colors from "@/assets/styles/Colors"
 
 import colors from "@/assets/styles/colors"
 export default function categorieList() {

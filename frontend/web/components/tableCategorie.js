@@ -4,16 +4,18 @@ import axios from "axios"
  export default function table() {
     const [categories,setCategories]=useState([])
 
-    const remove = async (e) => {
-        e.preventDefault();
-        const categories = await axios.delete("http://172.16.8.43:5000/api/categorie/Remove-categorie",{ id: e.target.value });
-        if (categories.data) 
-        console.log(categories.data)
-        // window.location.reload(false);
-      };
+    const remove = async (id) => {
+        await axios.delete(`http://172.26.48.1:5000/api/categorie/Remove-categorie/${id}`)
+            .then((value) => {
+                notify(value.data.message)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
     
     const data= async ()=>{
-        await axios.get('http://172.16.8.43:5000/api/categorie/get-all-categorie')
+        await axios.get('http://localhost:5000/api/categorie/get-all-categorie')
             .then((value)=>{
                 setCategories(value.data.categories)
             })
