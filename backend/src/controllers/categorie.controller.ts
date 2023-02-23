@@ -4,8 +4,7 @@ import { Categorie } from "../models/categorie.model";
 export class CategorieControllers {
     static async GetAllCategorie(req: Request, res: Response){
         try{
-            const {name} = req.body
-            const categories = await Categorie.find({name})
+            const categories = await Categorie.find()
             res.json({categories})
         }
         catch (error){
