@@ -8,7 +8,7 @@ export class AuthControllers {
     static async Login(req: Request, res: Response) {
         try {
             const { email, password } = req.body
-            if (email == '' || password == '') res.json({ error: 'Fill the all fields to register' })
+            if (email == '' || password == '') res.json({ error: 'Fill the all fields to login' })
             else if (!validator.isEmail(email)) res.json({ error: `${email} is not email` })
             else {
                 const find_user = await User.findOne({ email })
@@ -19,7 +19,7 @@ export class AuthControllers {
                     else {
                         const token = await Token.Token(find_user._id)
                         res.header({ token })
-                        res.json({ token, email, username: find_user.username })
+                        res.json({ token, user: { username: find_user.username, email, role: find_user.role } })
                     }
                 }
             }

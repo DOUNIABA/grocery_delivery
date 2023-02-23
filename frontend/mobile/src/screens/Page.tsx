@@ -5,15 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../assets/styles/colors';
 import styles from '../assets/styles/styles';
 
-import ApiLogin from '../services/auth.services';
-
 function Page() {
     const navigation = useNavigation();
     const [load, setLoad] = useState(false);
     const [test, setTest] = useState([]);
     useEffect(() => {
         setTimeout(() => { setLoad(true) }, 1000)
-        ApiLogin()
     }, [])
 
     if (load)
