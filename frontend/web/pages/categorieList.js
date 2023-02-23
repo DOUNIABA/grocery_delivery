@@ -1,8 +1,7 @@
 import Link from "next/link"
-import React, { useState, useEffect } from "react"
-import { BiEdit } from "react-icons/bi"
-import Form from "@/components/formCategorie"
-import Table from "@/components/tableCategorie"
+import React, { useState } from "react"
+import Form from "../components/categorie/formCategorie"
+import Table from "../components/categorie/tableCategorie"
 import colors from "@/styles/colors"
 
 import colors from "@/assets/styles/colors"

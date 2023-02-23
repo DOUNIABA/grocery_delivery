@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import Form from "@/components/formVenduer"
-import Table from "@/components/tableVendeur"
+import Form from "../components/vendeur/formVenduer"
+import Table from "../components/vendeur/tableVendeur"
 import colors from "@/assets/styles/colors"
 
 export default function vendeurList() {

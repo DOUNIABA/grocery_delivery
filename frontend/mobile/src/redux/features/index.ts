@@ -5,6 +5,7 @@ interface UserData {
     username: string
     email: string
 }
+
 let initialState = {
     isLogin: false,
     message: '',
