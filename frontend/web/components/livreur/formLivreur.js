@@ -1,0 +1,34 @@
+import React from 'react'
+import axios from "axios"
+
+export default function formVenduer() {
+  const [addLivreur, setAddLivreur] = React.useState({ username: '', email: '' })
+  const [message, setMessage] = React.useState('')
+  const onChange = (e) => {
+    const value = e.target.value;
+    setAddLivreur({ ...addLivreur, [e.target.name]: value })
+  }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post('http://localhost:5000/api/livreur/add-livreur', addLivreur)
+      .then((value) => {
+        setMessage(value.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  return (
+    <form className='d-flex justify-content-center gap-3'>
+      <input type="text" onChange={onChange} name="username" placeholder='Username' className='border ps-3 focus:outline-none rounded-md' />
+      <input type="text" onChange={onChange} name="email" placeholder='Email' className='border ps-3 focus:outline-none rounded-md' />
+      <button onClick={onSubmit} className="btn btn-warning text-md text-ligh py-2 px-4 border rounded-md ">Add</button>
+      <div className='d-flex align-items-center'>{
+        message.error
+        ? <div className="text-danger">{message.error}</div>
+        : <div className="text-success">{message.message}</div>
+      }</div>
+    </form>
+  )
+}

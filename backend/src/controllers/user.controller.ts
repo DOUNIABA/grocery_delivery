@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import validator from 'validator';
 import { Password } from '../functions/password.function';
 import { User } from '../models/user.model';
+import { Product } from '../models/product.model';
+import { Categorie } from '../models/categorie.model';
 
 export class UserControllers {
     static async GetAllLivreur(req: Request, res: Response) {
@@ -48,9 +50,16 @@ export class UserControllers {
                 const find_user = await User.findById(id)
                 if (!find_user) res.json({ error: 'Livreur not found' })
                 else {
-                    const delete_user = await User.updateOne({ _id: id }, { status: false })
-                    if (!delete_user) res.json({ error: 'Error deleting livreur' })
-                    res.json({ message: 'Livreur deleted Successfully' })
+                    if (find_user.status) {
+                        const delete_user = await User.updateOne({ _id: id }, { status: false })
+                        if (!delete_user) res.json({ error: 'Error banned livreur' })
+                        res.json({ message: 'Livreur banned' })
+                    }
+                    else {
+                        const delete_user = await User.updateOne({ _id: id }, { status: true })
+                        if (!delete_user) res.json({ error: 'Error unbanned livreur' })
+                        res.json({ message: 'Livreur unbanned' })
+                    }
                 }
             }
         } catch (error) {
@@ -118,5 +127,15 @@ export class UserControllers {
         } catch (error) {
             res.status(500).json({ error: error });
         }
+    }
+
+    static async Statistique(req: Request, res: Response) {
+        const client = await User.find({role: 'Client'}).count()
+        const livreur = await User.find({role: 'Livreur'}).count()
+        const vendeur = await User.find({role: 'Vendeur'}).count()
+        const product = await Product.find().count()
+        const categorie = await Categorie.find().count()
+
+        res.json({client, livreur, vendeur, product, categorie})
     }
 }

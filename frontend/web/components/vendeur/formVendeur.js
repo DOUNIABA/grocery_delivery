@@ -10,7 +10,7 @@ export default function formVenduer() {
   }
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://172.26.48.1:5000/api/vendeur/add-vendeur', addVendeur)
+    await axios.post('http://localhost:5000/api/vendeur/add-vendeur', addVendeur)
       .then((value) => {
         setMessage(value.data)
       })
