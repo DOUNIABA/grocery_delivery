@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
  
  export default function table() {
+
     const [categories,setCategories]=useState([])
 
-    const remove = async (id) => {
-        await axios.delete(`http://172.26.48.1:5000/api/categorie/Remove-categorie/${id}`)
+    const deleteCategorie = async (id) => {
+        await axios.delete(`http://localhost:5000/api/categorie/Remove-categorie/${id}`)
             .then((value) => {
                 notify(value.data.message)
             })
@@ -13,16 +17,17 @@ import axios from "axios"
                 console.log(err)
             })
     }
-    
+
     const data= async ()=>{
-        await axios.get('http://localhost:5000/api/categorie/get-all-categorie')
-            .then((value)=>{
-                setCategories(value.data.categories)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-    }
+       await axios.get('http://localhost:5000/api/categorie/get-all-categorie')
+        .then((value)=>{
+            // console.log(value.data.categories)
+            setCategories(value.data.categories)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+   }
 
 useEffect(()=>{
     data();
@@ -46,15 +51,23 @@ useEffect(()=>{
                     <th scope="row">{i+1}</th>
                     <td>{e.name}</td>
                     <td className="px-3 d-flex justify-content-around ">
-                    <button type="submit" className="btn btn-secondary">Edit</button>
-                    <button type="submit" className=" btn btn-secondary" value={e._id} onClick={remove}>Delete</button>
-                    </td>
+                                    {e.status
+                                        ? <i type='button' onClick={() => deleteCategorie(e._id)} className="bi bi-trash2-fill h5"></i>
+                                        : <i type='button' onClick={() => deleteCategorie(e._id)} className="bi bi-arrow-clockwise h5"></i>
+                                    }
+                            <Link href="/EditCategorie"> <button type="submit" className="btn btn-secondary">Edit</button>
+                            </Link>
+                           
+
+
+                                </td>
                     </tr>
                         ))
                     }
            
                     </tbody>
                 </table>
+                <ToastContainer />
             </div>
      
    )

@@ -8,7 +8,7 @@ export default function formCategorie() {
 
   const handleSubmit= async (e)=>{
       e.preventDefault();
-      const categorie=await axios.post('http://172.16.8.43:5000/api/categorie/create-categorie',formData)
+      const categorie=await axios.post('http://localhost:5000/api/categorie/create-categorie',formData)
       if(categorie.data) window.location.reload(false);
       }
 

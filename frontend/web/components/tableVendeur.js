@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function table() {
+
     const [vendeurs, setVendeurs] = useState([])
 
     const data = async () => {
@@ -15,6 +16,7 @@ export default function table() {
                 console.log(err)
             })
     }
+    
     const deleteVendeur = async (id) => {
         await axios.delete(`http://172.26.48.1:5000/api/vendeur/delete-vendeur/${id}`)
             .then((value) => {
