@@ -40,7 +40,6 @@ export class UserControllers {
         }
     }
 
-
     static async DeleteLivreur(req: Request, res: Response) {
         try {
             const { id } = req.params;
