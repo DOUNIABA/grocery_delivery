@@ -4,6 +4,8 @@ import { vendeur_route } from './mini.router/vendeur.route'
 import { categorie_route } from './mini.router/categorie.route'
 import { Product_route } from './mini.router/product.route'
 
+import { UserControllers } from '../controllers/user.controller'
+
 class AppRoute {
     public Route: express.Router;
 
@@ -18,6 +20,7 @@ class AppRoute {
         this.Route.use('/vendeur', vendeur_route);
         this.Route.use('/categorie', categorie_route);
         this.Route.use('/produit', Product_route);
+        this.Route.get('/statistique', UserControllers.Statistique);
     }
 }
 
