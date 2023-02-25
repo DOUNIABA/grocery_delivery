@@ -67,7 +67,6 @@ export class UserControllers {
         }
     }
 
-
     static async GetAllVendeur(req: Request, res: Response) {
         try {
             const get_all_Vendeur = await User.find({ role: 'Vendeur' })
