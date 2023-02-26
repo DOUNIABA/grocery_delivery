@@ -42,7 +42,6 @@ export class UserControllers {
         }
     }
 
-
     static async DeleteLivreur(req: Request, res: Response) {
         try {
             const { id } = req.params;
@@ -67,7 +66,6 @@ export class UserControllers {
             res.status(500).json({ error: error });
         }
     }
-
 
     static async GetAllVendeur(req: Request, res: Response) {
         try {
