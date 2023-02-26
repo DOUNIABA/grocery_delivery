@@ -16,7 +16,7 @@ export default function Login() {
         if(!value.data.error) {
           localStorage.setItem('token', value.data.token)
           localStorage.setItem('user', value.data.user)
-          window.location.href = '/statistique'
+          window.location.href = 'statistique'
         }
         else setMessage(value.data.error)
       })

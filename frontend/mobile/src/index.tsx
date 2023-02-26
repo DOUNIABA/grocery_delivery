@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import AuthRouter from './router/auth.router';
+import AppRouter from './router/app.router';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -14,6 +15,7 @@ function Index() {
             <NavigationContainer>
                 <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
                     <Tab.Screen options={{ headerShown: false }} name="Auth" component={AuthRouter} />
+                    <Tab.Screen options={{ headerShown: false }} name="App" component={AppRouter} />
                 </Tab.Navigator>
             </NavigationContainer>
         </Provider>

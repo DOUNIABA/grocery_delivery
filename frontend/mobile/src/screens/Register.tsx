@@ -7,7 +7,7 @@ import styles from '../assets/styles/styles';
 
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { REGISTER_SUCCESS, REGISTER_FAIL, SETMESSAGE } from '../redux/features/index';
+import { REGISTER_SUCCESS, REGISTER_FAIL, SETMESSAGE } from '../redux/features/auth';
 
 import AuthHeader from '../components/Auth.Header';
 import Input from '../components/Input';

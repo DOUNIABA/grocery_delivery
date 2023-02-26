@@ -168,6 +168,30 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    // ////////////////////////////////////////////////////////////
+    searchBar: {
+        height: 60,
+        paddingVertical: 5,
+        paddingHorizontal: 15,
+        margin: 5,
+        backgroundColor: colors.white,
+        shadowColor: colors.white,
+        elevation: 10,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 10,
+    },
+    searchBarInput: {
+        width: '90%',
+        fontSize: 18,
+        borderBottomColor: colors.color1,
+        borderColor: colors.color1,
+        borderBottomWidth: 3,
+    },
 })
 
 export default styles;

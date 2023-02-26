@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LOGIN_FAIL, LOGIN_SUCCESS, SETMESSAGE } from '../redux/features/index';
+import { LOGIN_FAIL, LOGIN_SUCCESS, SETMESSAGE } from '../redux/features/auth';
 
 import styles from '../assets/styles/styles';
 import colors from '../assets/styles/colors';
@@ -20,6 +20,7 @@ function Login() {
 
     const [login, setLogin] = React.useState({ email: '', password: '' });
     const message = useSelector((state: any) => state.Auth.message);
+    console.log(message)
 
     React.useEffect(() => {
         dispatch(SETMESSAGE())
@@ -31,7 +32,6 @@ function Login() {
                 if (!res.data.token) {
                     dispatch(LOGIN_FAIL(res.data))
                 } else {
-
                     dispatch(LOGIN_SUCCESS(res.data))
                     AsyncStorage.setItem('token', res.data.token)
                     AsyncStorage.setItem('user', res.data.user)
