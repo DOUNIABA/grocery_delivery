@@ -4,7 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import { SETSTATE } from '../redux/features/index';
+import { SETSTATE } from '../redux/features/auth';
+import { SETSTATESTORE } from '../redux/features/store';
 
 import colors from '../assets/styles/colors';
 
@@ -21,7 +22,10 @@ const AppRouter = () => {
         try {
             AsyncStorage.getItem('token').then((token) => {
                 AsyncStorage.getItem('user').then((user) => {
-                    dispatch(SETSTATE({ token, user }))
+                    AsyncStorage.getItem('store').then((store) => {
+                        dispatch(SETSTATE({ token, user }))
+                        dispatch(SETSTATESTORE({ store }))
+                    })
                 })
             })
         } catch (error) {

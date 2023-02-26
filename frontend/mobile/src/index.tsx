@@ -13,7 +13,7 @@ function Index() {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="App">
+                <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
                     <Tab.Screen options={{ headerShown: false }} name="Auth" component={AuthRouter} />
                     <Tab.Screen options={{ headerShown: false }} name="App" component={AppRouter} />
                 </Tab.Navigator>

@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import colors from '../assets/styles/colors';
 import styles from '../assets/styles/styles';
-
-import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const Store = () => {
-  const navigation = useNavigation();
-
-  const [mystore, setMystore] = useState([
-    { id: 1, title: 'Produit 1', image: 'grocery.png', price: 100, quantite: 2 },
-    { id: 2, title: 'Produit 2', image: 'grocery.png', price: 200, quantite: 1 },
-    { id: 3, title: 'Produit 3', image: 'grocery.png', price: 300, quantite: 5 },
-    { id: 4, title: 'Produit 4', image: 'grocery.png', price: 400, quantite: 1 },
-  ])
-
+  const [mystore, setMystore] = useState([])
   const [state, setState] = useState(0);
+  const [totale, setTotale] = useState(0);
 
+  const store = useSelector((state: any) => state.Store.products)
+  console.log(store)
 
-  const [totale, setTotale] = useState(0)
   useEffect(() => {
+    if (store !== null) setMystore(store)
+    // console.log(mystore)
+
+    // AsyncStorage.clear()
+
     var e = 0;
     mystore.forEach(produit => {
       e += (produit.price * produit.quantite)
       setTotale(e)
     });
-  }, [state])
+  }, [mystore])
 
   return (
     <View style={{ flex: 1 }}>
@@ -41,7 +40,7 @@ const Store = () => {
               <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', gap: 25, backgroundColor: colors.white, padding: 10, borderRadius: 10, position: 'relative' }} key={i}>
                 <Image style={{ width: '20%', height: 100 }} source={require('../assets/images/grocery.png')} />
                 <View>
-                  <Text style={{ color: colors.black, fontSize: 20, fontWeight: 'bold' }}>{produit.title}</Text>
+                  <Text style={{ color: colors.black, fontSize: 20, fontWeight: 'bold' }}>{produit.name}</Text>
                   <Text style={{ color: colors.black, fontSize: 15, }}>Quantite: {produit.quantite}</Text>
                   <Text style={{ color: colors.black, fontSize: 15, }}>Price Total: {produit.price * produit.quantite} DH</Text>
                 </View>

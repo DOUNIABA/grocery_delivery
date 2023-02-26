@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { View, Image, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { ADD_STORE } from '../redux/features/store';
+
 import colors from '../assets/styles/colors';
 import styles from '../assets/styles/styles';
 
 const Product = ({ route, navigation }) => {
+  const dispatch = useDispatch();
   const [produit, setProduit] = useState(route.params.produit)
 
   return (
@@ -37,7 +41,7 @@ const Product = ({ route, navigation }) => {
         <View style={{ width: '100%', flexDirection: 'row', paddingHorizontal: 20, }}>
           <Text style={{ color: colors.black, fontSize: 20, }}>Total: {produit.price * produit.quantite} DH</Text>
         </View>
-        <Text style={styles.loginBtn} onPress={() => navigation.navigate('Store')}>Add to store</Text>
+        <Text style={styles.loginBtn} onPress={() => dispatch(ADD_STORE(produit))}>Add to store</Text>
         <Text style={{ color: 'red' }}>Notice: The price is for one kilogram</Text>
       </View>
     </View>
