@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import colors from '../assets/styles/colors';
 import styles from '../assets/styles/styles';
@@ -9,11 +10,11 @@ const Product = ({ route, navigation }) => {
 
   return (
     <View style={{ flex: 1, position: 'relative' }}>
-      <View style={{ position: 'absolute', zIndex: 2 }}>
-        <Icon />
-      </View>
+      <Text style={{ position: 'absolute', zIndex: 2, margin: 15, backgroundColor: colors.white, padding: 12, textAlign: 'center', borderRadius: 100 }} onPress={() => navigation.goBack()}>
+        <Icon name="chevron-left" size={20} color={colors.black} />
+      </Text>
       <View style={{ width: '100%', flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 15, }}>
-        <Image style={{ width: '100%', height: 350 }} source={produit.image} />
+        <Image style={{ width: '100%', height: 350 }} source={{ uri: `http://192.168.221.206:5000/${produit.image}` }} />
         <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, }}>
           <View>
             <Text style={{ color: colors.black, fontSize: 12, }}>{produit.categorie}</Text>
